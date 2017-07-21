@@ -1,0 +1,464 @@
+<!DOCTYPE HTML>
+
+<html>
+
+	<head>
+		<title>Projet - Ethdroid</title>
+		<meta charset="utf-8"/>
+		<meta name="description" content="ethdroid, open source, projects"/>
+		<link rel="stylesheet" href="../../css/main.css"/>
+		<link rel="stylesheet" href="../../css/styles/zenburn.css">
+
+	</head>
+
+	<body class="right-sidebar">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-project-wrapper">
+					<div id="header-project">
+
+						<!-- Logo -->
+							<h1>Ethdroid</h1>
+
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div id="main-wrapper">
+					<div class="container">
+						<div class="row">
+							<div class="8u 12u(mobile)">
+
+								<!-- Content -->
+									<article class="box post" id="md_article">
+										<!-- <img src="../../images/*.ext" class="image featuredproject" alt=""/> -->
+
+										<!-- Macro Jekyll -->
+										  <div class="content"> <h1 id="ethdroid--easy-to-use-ethereum-geth-wrapper-for-android">Ethdroid : Easy-to-use Ethereum Geth wrapper for Android</h1>
+
+<p><a href="https://travis-ci.org/ethmobile/ethdroid"><img src="https://travis-ci.org/ethmobile/ethdroid.svg?branch=master" alt="Build Status" /></a>
+<a href="https://scan.coverity.com/projects/ethdroid"><img src="https://scan.coverity.com/projects/12878/badge.svg" alt="Coverity Status" /></a></p>
+
+<h2 id="why-using-ethdroid">Why using Ethdroid</h2>
+
+<p>If you think that smartphone is future of blockchain, <strong>Ethdroid</strong> is here to help you building amazing decentralized smartphone apps.</p>
+
+<p>This project was born as soon as the Geth community built the first android archive. Our needs was 
+to allow an Android App communicate with an inproc Geth node.</p>
+
+<p>Thanks to our hard work, we’ve reached our goals and built 3 differents use-cases of decentralized smartphone apps :</p>
+<ul>
+  <li>decentralized car sharing</li>
+  <li>voting through blockchain</li>
+  <li>location of peoples all arround the world</li>
+</ul>
+
+<p><a href="mailto:ethereummobile@gmail.com">Contact us</a> for more informations on our works.</p>
+
+<p>With Ethereum-android it becomes easier to :</p>
+<ul>
+  <li>instanciate an Ethereum go-ethereum inproc node,</li>
+  <li>manage accounts,</li>
+  <li>get nodes information,</li>
+  <li>send Ether</li>
+  <li>and also call smart-contracts.</li>
+</ul>
+
+<p>Futhermore <strong>Rx-java 1</strong> and its extensions simplify control of asynchronous flows and background processes.</p>
+
+<p>This package can be used on <strong>Android 22+</strong> and with <strong>Geth 1.6.2+</strong>.</p>
+
+<h2 id="download-ethdroid-and-set-geth-version">Download Ethdroid and set Geth version</h2>
+
+<p>Ethdroid and Geth <strong><em>stable</em></strong> versions are distribued throught <strong><em>jCenter</em></strong>.</p>
+
+<p>Because Geth project evolves independently of Ethdroid library. That’s why you are free to set the 
+latest compatible Geth version as dependency.</p>
+
+<pre><code class="language-Kotlin">repositories {
+    jCenter()
+}
+dependencies {
+    compile 'io.ethmobile:ethdroid:2.0.0-m2'
+    compile 'org.ethereum:geth:1.6.5'
+}
+</code></pre>
+
+<p>For current <strong><em>develop</em></strong> version of Ethdroid, you can download via :</p>
+
+<pre><code class="language-Kotlin">repositories {
+    jCenter()
+    maven { url "https://oss.jfrog.org/artifactory/oss-snapshot-local" }
+}
+dependencies {
+    compile 'io.ethmobile:ethdroid:2.0.0-m3-SNAPSHOT'
+    compile 'org.ethereum:geth:1.6.5'
+}
+</code></pre>
+
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="start-a-geth-node">Start a Geth node</h3>
+
+<p>With Ethdroid you can easly connect a smartphone to an Ethereum blockchain.</p>
+
+<p>You can connect to :</p>
+<ul>
+  <li>Main network</li>
+  <li>test network</li>
+  <li>private network</li>
+</ul>
+
+<p>Thanks to the Ethdroid.Builder class, you can customize your node.</p>
+
+<p>First of all, to create a Builder you have to provide the directory path where blockchain data files will be saved.</p>
+
+<p>Then, provide the chain configuration, or use the default ones.</p>
+
+<p><em>Optionally</em>, reference a <em>Key Manager</em> if you have already built it.
+It’s mandatory in order to use account related node functions, but you can reference it later.</p>
+
+<p><em>Optionally</em>, reference a Go Context to use as default when making calls to node (See <a href="https://golang.org/pkg/context/">golang doc</a>). Default is <em>backgroundContext</em>.</p>
+
+<p>Finally, build to get the node reference and start communication with it.</p>
+
+<h4 id="on-main-network">on <strong>main network</strong></h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>
+<span class="k">new</span> <span class="n">EthDroid</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">datadir</span><span class="o">)</span>  <span class="c1">//Whatever directory path where blockchain files must be saved.</span>
+    <span class="o">.</span><span class="na">onMainnet</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+</code></pre>
+</div>
+
+<h4 id="on-test-network">on <strong>test network</strong></h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>
+<span class="k">new</span> <span class="n">EthDroid</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">datadir</span><span class="o">)</span>  <span class="c1">//Whatever directory path where blockchain files must be saved.</span>
+    <span class="o">.</span><span class="na">onTestnet</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+</code></pre>
+</div>
+
+<h4 id="on-private-network">on <strong>private network</strong></h4>
+
+<p>Private network is a little bit trickier because you have to provide more information.</p>
+
+<ul>
+  <li>the genesis : String (standard genesis json file)</li>
+  <li>the network id : long (you can find it in your genesis)</li>
+  <li>peer node url : String (at least one. It can be a <a href="https://github.com/ethereum/go-ethereum/blob/master/cmd/bootnode/main.go">bootnode</a> or any other node of the private network. Format is : “enode://<em>${id}</em>@<em>${ip}</em>:<em>${port}</em>?discport:<em>${port}+1</em>)</li>
+</ul>
+
+<p>You can find an example at <a href="https://github.com/ethmobile/ethdroid/blob/master/ethdroid/src/androidTest/java/io/ethmobile/ethdroid/EthDroidBuilderTest.java#L48">EthdroidBuilderTest</a></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>
+<span class="n">EthDroid</span> <span class="n">ethdroid</span> <span class="o">=</span> <span class="n">EthDroid</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">datadir</span><span class="o">)</span> <span class="c1">//Whatever directory path where blockchain files must be saved.</span>
+    <span class="o">.</span><span class="na">withChainConfig</span><span class="o">(</span><span class="k">new</span> <span class="n">ChainConfig</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">networkID</span><span class="o">,</span> <span class="n">genesis</span><span class="o">,</span> <span class="n">bootnode</span><span class="o">).</span><span class="na">build</span><span class="o">())</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+</code></pre>
+</div>
+
+<h3 id="accounts-management">Accounts management</h3>
+
+<p>//TODO</p>
+
+<h3 id="send-ether">Send Ether</h3>
+
+<p>//TODO</p>
+
+<h3 id="interact-with-a-smart-contract">Interact with a <em>smart-contract</em></h3>
+
+<h4 id="instanciate-the-smart-contract-interface">Instanciate the <em>smart-contract</em> interface</h4>
+
+<p>From the following Solidity smart-contract source code:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>    <span class="nx">contract</span> <span class="nx">ContractExample</span> <span class="p">{</span>
+
+        <span class="nx">event</span> <span class="nx">e</span><span class="p">(</span><span class="nx">bool</span><span class="p">);</span>
+        <span class="nx">event</span> <span class="nx">multipleEvent</span><span class="p">(</span><span class="nx">bool</span><span class="p">,</span><span class="nx">bool</span><span class="p">,</span><span class="nx">bool</span><span class="p">);</span>
+
+        <span class="k">void</span> <span class="nx">foo</span><span class="p">(){</span>
+            <span class="p">[...]</span>
+        <span class="p">}</span>
+
+        <span class="nx">uint</span> <span class="nx">bar</span><span class="p">(</span><span class="kr">int</span> <span class="nx">a</span><span class="p">){</span>
+            <span class="p">[...]</span>
+        <span class="p">}</span>
+        
+        <span class="nx">event</span> <span class="nx">eventOutputMatrix</span><span class="p">(</span><span class="kr">int</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]){</span>
+            <span class="p">[...]</span>
+        <span class="p">}</span>
+        
+        <span class="kd">function</span> <span class="nx">functionOutputMatrix</span><span class="p">()</span> <span class="nx">returns</span><span class="p">(</span><span class="nx">uint8</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">8</span><span class="p">]){</span>
+            <span class="p">[...]</span>
+        <span class="p">}</span>
+        
+        <span class="kd">function</span> <span class="nx">functionInputMatrix</span><span class="p">(</span><span class="nx">uint8</span><span class="p">[</span><span class="mi">3</span><span class="p">]){</span>
+            <span class="p">[...]</span>
+        <span class="p">}</span>
+        
+        <span class="kd">function</span> <span class="nx">functionOutputMultiple</span><span class="p">()</span> <span class="nx">returns</span><span class="p">(</span><span class="nx">bool</span><span class="p">,</span><span class="nx">uint8</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]){</span>
+            <span class="p">[...]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>    
+</code></pre>
+</div>
+
+<ol>
+  <li>Create the related Java interface :</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="kd">interface</span> <span class="nc">ContractExample</span> <span class="kd">extends</span> <span class="n">ContractType</span><span class="o">{</span>
+       
+       <span class="n">SolidityEvent</span><span class="o">&lt;</span><span class="n">SBool</span><span class="o">&gt;</span> <span class="nf">e</span><span class="o">();</span>
+       
+       <span class="n">SolidityEvent3</span><span class="o">&lt;</span><span class="n">SBool</span><span class="o">,</span><span class="n">SBool</span><span class="o">,</span><span class="n">SBool</span><span class="o">&gt;</span> <span class="nf">multipleEvent</span><span class="o">();</span>
+          
+       <span class="n">SolidityFunction</span> <span class="nf">foo</span><span class="o">();</span>
+       
+       <span class="n">SolidityFunction</span> <span class="nf">bar</span><span class="o">(</span><span class="n">SInt</span><span class="o">.</span><span class="na">SInt256</span> <span class="n">a</span><span class="o">);</span>
+     
+  
+       <span class="nd">@SolidityElement</span><span class="o">.</span><span class="na">ReturnParameters</span><span class="o">({</span><span class="nd">@SArray</span><span class="o">.</span><span class="na">Size</span><span class="o">({</span><span class="mi">3</span><span class="o">,</span><span class="mi">3</span><span class="o">})})</span> 
+       <span class="n">SolidityEvent</span><span class="o">&lt;</span><span class="n">SArray</span><span class="o">&lt;</span><span class="n">SArray</span><span class="o">&lt;</span><span class="n">SInt</span><span class="o">.</span><span class="na">SInt256</span><span class="o">&gt;&gt;&gt;</span> <span class="nf">eventOutputMatrix</span><span class="o">();</span>
+       
+       <span class="nd">@SolidityElement</span><span class="o">.</span><span class="na">ReturnParameters</span><span class="o">({</span><span class="nd">@SArray</span><span class="o">.</span><span class="na">Size</span><span class="o">({</span><span class="mi">2</span><span class="o">,</span><span class="mi">8</span><span class="o">})})</span>
+       <span class="n">SolidityFunction</span><span class="o">&lt;</span><span class="n">SArray</span><span class="o">&lt;</span><span class="n">SArray</span><span class="o">&lt;</span><span class="n">SUInt</span><span class="o">.</span><span class="na">SUInt8</span><span class="o">&gt;&gt;&gt;</span> <span class="nf">functionOutputMatrix</span><span class="o">();</span>
+      
+       <span class="n">SolidityFunction</span> <span class="nf">functionInputMatrix</span><span class="o">(</span><span class="nd">@SArray</span><span class="o">.</span><span class="na">Size</span><span class="o">({</span><span class="mi">3</span><span class="o">})</span> <span class="n">SArray</span><span class="o">&lt;</span><span class="n">SUInt</span><span class="o">.</span><span class="na">SUInt8</span><span class="o">&gt;</span> <span class="n">a</span><span class="o">);</span>
+       
+       <span class="nd">@SolidityElement</span><span class="o">.</span><span class="na">ReturnParameters</span><span class="o">({</span><span class="nd">@SArray</span><span class="o">.</span><span class="na">Size</span><span class="o">(),</span><span class="nd">@SArray</span><span class="o">.</span><span class="na">Size</span><span class="o">({</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">})})</span>
+       <span class="n">SolidityFunction2</span><span class="o">&lt;</span><span class="n">SBool</span><span class="o">,</span><span class="n">SArray</span><span class="o">&lt;</span><span class="n">SArray</span><span class="o">&lt;</span><span class="n">SUInt</span><span class="o">.</span><span class="na">SUInt8</span><span class="o">&gt;&gt;&gt;</span> <span class="nf">functionOutputMultiple</span><span class="o">();</span>
+       
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+<p>When an input/output parameter of a function/event is an array, you have to specify its size with 
+the annotation : <strong>@SArray.Size</strong>.</p>
+
+<p>Its parameter is an array of integers like <strong>@SArray.Size{2,3,4}</strong> (its equivalent to an array
+of a size <em>type</em>[2][3][4])</p>
+
+<p>When your function/event returns an array, to specify its length you have to use the annotation 
+<strong>@SolidityElement.ReturnParameters({})</strong> which takes an array of @SArray.Size annotations as value.</p>
+
+<p>When your function returns multiple types, you have to specify the related SolidityFunction.
+For exemple, if your function returns 2 booleans you must use return <strong>SolidityFunction2&lt;SBool,SBool&gt;</strong></p>
+
+<p>Table of multiple return type elements and their related wrapper :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Number of Returns</th>
+      <th>Function</th>
+      <th>Event</th>
+      <th>Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">0</td>
+      <td>SolidityFunction</td>
+      <td>SolidityEvent</td>
+      <td>SType</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1</td>
+      <td>SolidityFunction<code class="highlighter-rouge">&lt;T&gt;</code></td>
+      <td>SolidityEvent<code class="highlighter-rouge">&lt;T&gt;</code></td>
+      <td>SingleReturn<code class="highlighter-rouge">&lt;T&gt;</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td>SolidityFunction2<code class="highlighter-rouge">&lt;T1,T2&gt;</code></td>
+      <td>SolidityEvent2<code class="highlighter-rouge">&lt;T1,T2&gt;</code></td>
+      <td>PairReturn<code class="highlighter-rouge">&lt;T1,T2&gt;</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: right">3</td>
+      <td>SolidityFunction3<code class="highlighter-rouge">&lt;T1,T2,T3&gt;</code></td>
+      <td>SolidityEvent3<code class="highlighter-rouge">&lt;T1,T2,T3&gt;</code></td>
+      <td>TripleReturn<code class="highlighter-rouge">&lt;T1,T2,T3&gt;</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<ol>
+  <li>
+    <p>Instanciate the <em>smart-contract</em> available on the blockchain at the given address</p>
+
+    <p>//TODO</p>
+  </li>
+</ol>
+
+<h4 id="make-a-local-then-reverted-call-to-a-smart-contract-function">Make a local then reverted call to a <em>smart-contract</em> function</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>
+    <span class="n">PairReturn</span><span class="o">&lt;</span><span class="n">SBool</span><span class="o">,</span><span class="n">SArray</span><span class="o">&lt;</span><span class="n">SArray</span><span class="o">&lt;</span><span class="n">SUInt</span><span class="o">.</span><span class="na">SUInt8</span><span class="o">&gt;&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">contract</span><span class="o">.</span><span class="na">functionOutputMultiple</span><span class="o">().</span><span class="na">call</span><span class="o">();</span>
+    
+    <span class="n">SBool</span> <span class="n">resultSBool</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">getElement1</span><span class="o">();</span>
+    
+    <span class="n">SArray</span><span class="o">&lt;</span><span class="n">SArray</span><span class="o">&lt;</span><span class="n">SUInt</span><span class="o">.</span><span class="na">SUInt8</span><span class="o">&gt;&gt;</span> <span class="n">resultMatrix</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">getElement2</span><span class="o">();</span>
+
+</code></pre>
+</div>
+
+<h4 id="make-a-persistent-call-to-a-smart-contract-function-and-be-notified-when-its-mined">Make a persistent call to a <em>smart-contract</em> function and be notified when it’s mined</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//TODO
+</code></pre>
+</div>
+
+<h4 id="listen-to-smart-contract-events">Listen to <em>smart-contract</em> events</h4>
+
+<p>From Android app, subscribe to Solidity events in a background process and be notified in main thread to update the view.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="n">contract</span><span class="o">.</span><span class="na">e</span><span class="o">.</span><span class="na">listen</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">observeOn</span><span class="o">(</span><span class="n">AndroidSchedulers</span><span class="o">.</span><span class="na">mainThread</span><span class="o">())</span>
+        <span class="o">.</span><span class="na">subscribe</span><span class="o">(</span><span class="n">booleanAnswer</span> <span class="o">-&gt;</span> <span class="n">doWhenEventTriggered</span><span class="o">());</span>
+    
+    <span class="cm">/*
+        doWhenEventTriggered is a local method called when event is triggered by the deployed smart-contract
+        booleanAnswer is the parameter returned by the triggered event. 
+        You can directly update your app view
+    */</span>
+</code></pre>
+</div>
+
+<h2 id="project-architecture">Project Architecture</h2>
+
+<p>//TODO</p>
+
+<h2 id="contribute">Contribute</h2>
+<p>//TODO</p>
+
+<h3 id="add-code-style-to-android-studio">Add code style to Android Studio</h3>
+
+<ul>
+  <li>
+    <p>For IntelliJ 13+ :</p>
+
+    <ol>
+      <li>Edit -&gt; Macros -&gt; Start Macro Recording</li>
+      <li>Code -&gt; Reformat Code</li>
+      <li>File -&gt; Save all</li>
+      <li>Edit -&gt; Macros -&gt; Stop Macro Recording</li>
+      <li>Name the macro (something like “formatted save”)</li>
+      <li>File -&gt; Settings -&gt; Keymap</li>
+      <li>Right click on the macro. Add Keyboard Shortcut. Set the keyboard shortcut to Control + S.</li>
+      <li>IntelliJ will inform you of a hotkey conflict. Select “remove” to remove other assignments.</li>
+    </ol>
+  </li>
+  <li>
+    <p>For previous versions <a href="https://stackoverflow.com/a/5581992">click here</a></p>
+  </li>
+</ul>
+
+<h2 id="authors-and-contributors">Authors and contributors</h2>
+
+<ul>
+  <li>Guillaume Nicolas</li>
+  <li>Damien Lecan</li>
+  <li>Kevin Biger</li>
+  <li>Alice Le Bars</li>
+  <li>Mickael Came</li>
+</ul>
+
+<h2 id="licencing">Licencing</h2>
+
+<p>Ethdroid is released under the MIT License (MIT), see <a href="LICENSE">Licence</a>.</p>
+
+<p>Ethdroid depends on libraries with different licenses:</p>
+<ul>
+  <li>Geth: LGPL-3.0</li>
+  <li>RxJava : Apache 2.0</li>
+  <li>Google Gson: Apache 2.0</li>
+  <li>Squareup Okio: Apache 2.0</li>
+</ul>
+
+<p>Please respect terms and conditions of each licenses.</p>
+
+ </div>  
+
+									</article>
+
+							</div>
+							<div class="4u 12u(mobile)">
+
+								<!-- Databar -->
+									<section class="box">
+										<header>
+											<h3>Some data</h3>
+												<ul class="statistics">
+													<li id="init_date">Created</li>
+													<li id="last_update">Last update</li>
+													<li id="nb_contributors">contributors</li>
+													<li id="nb_commits">commits</li>
+												</ul>
+										</header>
+
+										<a href="https://github.com/ethmobile/ethdroid"><img src="../../images/GitHub-Mark-32px.png" alt=""></a>
+
+									</section>
+
+								<!-- Summary -->
+									<section class="box">
+										<header>
+											<h3>Summary</h3>
+												<ul class="divided" id="summary">
+												</ul>
+										</header>
+									</section>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="12u">
+
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<a href="http://www.sqli.com/"><img src="../../images/logo_sqli.png" height="24" width="44" style="vertical-align: middle; border: 0px"></a>
+											<li>Ethmobile &copy; 2017 - CC-BY-SA 4.0</li><li>Design: <a href="http://html5up.net">HTML5 UP</a> modified by <a href="https://github.com/maximegrnd">Maxime GRAND</a></li>
+										</ul>
+									</div>
+
+							</div>
+						</div>
+					</section>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script type="text/javascript" src="../../js/jquery.min.js"></script>
+			<script type="text/javascript" src="../../js/jquery.dropotron.min.js"></script>
+			<script type="text/javascript" src="../../js/skel.min.js"></script>
+			<script type="text/javascript" src="../../js/skel-viewport.min.js"></script>
+			<script type="text/javascript" src="../../js/util.js"></script>
+			<script type="text/javascript" src="../../js/main.js"></script>
+			<script type="text/javascript" src="../../js/url_request.js"></script>
+			<script type="text/javascript" src="js/data_ethdroid.js"></script>
+			<script type="text/javascript" src="../../js/generate_summary.js"></script>
+			<script type="text/javascript" src="../../js/animate.js"></script>
+			<script type="text/javascript" src="../../js/highlight.pack.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+
+	</body>
+</html>
