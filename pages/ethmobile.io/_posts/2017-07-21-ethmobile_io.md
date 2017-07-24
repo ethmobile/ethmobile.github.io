@@ -28,5 +28,4 @@ Récapitulatif des manoeuvres à effectuer :
 7. Modifier le chemin qui associe le fichier data_nom_du_projet.js pour le faire correspondre à votre projet
 8. Ouvrir l'index.html de la nouvelle page projet et changer la macro présente par :
 
-```{% for post in site.posts %} {% if post.path contains "/AAAA-MM-JJ-nom_du_programme.md" %} <div class="content"> {{ post.content }} </div> {% endif %} {% endfor %}
-```
+`{% for post in site.posts %} {% if post.path contains "/AAAA-MM-JJ-nom_du_programme.md" %} <div class="content"> {{ post.content }} </div> {% endif %} {% endfor %}`
