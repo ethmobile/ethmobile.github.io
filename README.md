@@ -23,7 +23,7 @@ Récapitulatif des manoeuvres à effectuer :
 2. Ouvrir le sous-dossier js de la copie et renommer le fichier JavaScript présent sous la forme data_nom_du_projet.js
 3. Ouvrir ce même fichier et modifier les liens de l'API GitHub afin de les faire coïncider avec votre projet
 4. Placer le README.md de votre programme et le renommer sous la forme suivante : AAAA-MM-JJ-nom_du_programme.md
-5. Ouvrir l'index.html présent et modifier le chemin qui associe le fichier data_[...].js pour le faire correspondre à votre projet (ligne 105)
+5. Ouvrir l'index.html présent, rectifier l'intérieur des balises et modifier le chemin qui associe le fichier data_[...].js en conséquence (ligne 105)
 6. Enfin, dans ce même fichier, changer la macro présente par (ligne 41) :
 
 `{% for post in site.posts %} {% if post.path contains "/AAAA-MM-JJ-nom_du_programme.md" %} <div class="content"> {{ post.content }} </div> {% endif %} {% endfor %}`
