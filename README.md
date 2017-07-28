@@ -21,7 +21,7 @@ A la racine du dossier projet devra être placé un fichier index.html, différe
 Récapitulatif des manoeuvres à effectuer :
 1. Créer un nouveau sous-dossier dans le dossier pages et attribuer lui le nom de votre projet
 2. Créer deux nouveaux dossiers dans le sous-dossier précédement créé et les nommer : _posts et js
-3. Copier le fichier JavaScript d'un projet pré-existant et le renommer : data_*nom_du_projet*.js
+3. Copier le fichier JavaScript d'un projet pré-existant et le renommer : data_nom_du_projet.js
 4. Ouvrir la copie du fichier JavaScript qui vient d'être renommée et modifier les liens de l'API GitHub pour les faire coïncider avec votre projet
 5. Placer le ou les README.md de votre programme et le(s) renommer sous la forme suivante : AAAA-MM-JJ-nom_du_programme.md
 6. Copier l'index.html d'une page projet pre-éxistante dans le sous-dossier nom_du_projet
