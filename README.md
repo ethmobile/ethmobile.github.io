@@ -16,16 +16,14 @@ La visibilité du projet ne dépend d'aucune intervention sur le fichier .html d
 ### Page projet
 
 Chaque projet mettant en avant le ou les programmes d'un utilisateur, devra faire l'objet de la création d'un sous-dossier à l'intérieur du dossier pages portant le nom de projet (ex: ethdroid) dans lequel se trouveront deux autres sous-dossiers : _posts et js.
-A la racine du dossier projet devra être placé un fichier index.html, différent de la home, qui sera la page web dédiée au projet et dans les deux autres le ou les README.md du ou des programmes ainsi que le data_nom_du_projet.js pour le second.
+A la racine du dossier projet devra être placé un fichier index.html, différent de la home, qui sera la page web dédiée au projet et dans les deux autres le README.md du ou des programmes ainsi que le data_nom_du_projet.js pour le second.
 
 Récapitulatif des manoeuvres à effectuer :
-1. Créer un nouveau sous-dossier dans le dossier pages et attribuer lui le nom de votre projet
-2. Créer deux nouveaux dossiers dans le sous-dossier précédement créé et les nommer : _posts et js
-3. Copier le fichier JavaScript d'un projet pré-existant et le renommer : data_nom_du_projet.js
-4. Ouvrir la copie du fichier JavaScript qui vient d'être renommée et modifier les liens de l'API GitHub pour les faire coïncider avec votre projet
-5. Placer le ou les README.md de votre programme et le(s) renommer sous la forme suivante : AAAA-MM-JJ-nom_du_programme.md
-6. Copier l'index.html d'une page projet pre-éxistante dans le sous-dossier nom_du_projet
-7. Ouvrir l'index.html et modifier le chemin qui associe le fichier data_nom_du_projet.js pour le faire correspondre à votre projet (ligne 108)
-8. Enfin, dans ce même fichier, changer la macro présente par (ligne 41) :
+1. Créer une copie du sous-dossier modele dans le dossier pages et attribuer lui le nom de votre projet
+2. Ouvrir le sous-dossier js de la copie et renommer le fichier JavaScript sous la forme data_nom_du_projet.js
+3. Ouvrir ce même fichier JavaScript et modifier les liens de l'API GitHub afin de les faire coïncider avec votre projet
+4. Placer le README.md de votre programme et le renommer sous la forme suivante : AAAA-MM-JJ-nom_du_programme.md
+5. Ouvrir l'index.html présent et modifier le chemin qui associe le fichier data_nom_du_projet.js pour le faire correspondre à votre projet (ligne 105)
+6. Enfin, dans ce même fichier, changer la macro présente par (ligne 41) :
 
 `{% for post in site.posts %} {% if post.path contains "/AAAA-MM-JJ-nom_du_programme.md" %} <div class="content"> {{ post.content }} </div> {% endif %} {% endfor %}`
