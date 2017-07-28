@@ -10,7 +10,7 @@ Le site a été conçu de manière à être responsive autant que possible, et c
 
 Le fichier index.html présent à la racine du répertoire ethmobile.io constitue la page d'accueil de la plate-forme. Il permet d'afficher, au-delà du listing des iniatives Open Source en cours, les technologies utilisées avant d'entrer davantage dans les détails.
 
-Un projet se voit lister dès lors qu'un répertoire dédié à celui-ci est créé sur le GitHub (Ethmobile). Dans cette même idée, un bouton de redirection apparaît à l'intérieur de chaque rubrique uniquement si une page de description précise pour un projet existe au sein de l'arborescence de fichiers (_pages/nom_du_projet/index.html).
+Un projet se voit lister dès lors qu'un repositories dédié à celui-ci est créé sur le GitHub (Ethmobile). Dans cette même idée, un bouton de redirection apparaît à l'intérieur de chaque rubrique uniquement si une page de description précise pour un projet existe au sein de l'arborescence de fichiers (_pages/nom_du_projet/index.html).
 La visibilité du projet ne dépend d'aucune intervention sur le fichier .html de la page home, il n'y a techniquement aucun apport à effectuer pour un utilisateur souhaitant exposer son ou ses codes.
 
 ### Page projet
