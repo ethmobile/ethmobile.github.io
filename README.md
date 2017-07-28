@@ -26,6 +26,6 @@ Récapitulatif des manoeuvres à effectuer :
 5. Placer le ou les README.md de votre programme et le(s) renommer sous la forme suivante : AAAA-MM-JJ-nom_du_programme.md
 6. Copier l'index.html d'une page projet pre-éxistante dans le sous-dossier nom_du_projet
 7. Ouvrir l'index.html et modifier le chemin qui associe le fichier data_nom_du_projet.js pour le faire correspondre à votre projet
-8. Enfin, dans ce même fichier, changer la macro présente par :
+8. Enfin, dans ce même fichier, changer la macro présente par (ligne 41) :
 
 `{% for post in site.posts %} {% if post.path contains "/AAAA-MM-JJ-nom_du_programme.md" %} <div class="content"> {{ post.content }} </div> {% endif %} {% endfor %}`
