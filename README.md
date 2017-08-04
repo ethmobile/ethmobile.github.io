@@ -1,7 +1,5 @@
 # ethmobile.io
 
-Projet web réalisé pour SQLi-Nantes visant à faire la promotion des projets mobiles Open Source de la blockchain.
-
 ## Tutoriel
 
 Le site a été conçu de manière à être responsive autant que possible, et ce, sur un maximum de supports (ordinateur, tablette et smartphone). Basé sur un template (HTML5 UP), il fonctionne avec la technologie Jekyll et a pour objectif d'être maintenable automatiquement en étant simple d'utilisation afin de faciliter l'ajout d'une ou plusieurs pages projet.
